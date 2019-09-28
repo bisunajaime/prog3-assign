@@ -5,14 +5,14 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Response Page</title>
-	<!-- <h:outputStylesheet name="design/style.css"/> --> 
+	<!-- <h:outputStylesheet name="design/style.css"/> -->
 	<style>
 		* {
 			padding: 0;
 			margin: 0;
 			box-sizing: border-box;
 			overflow: hidden;
-			font-family: 'Open Sans', sans-serif;
+			font-family: 'Courier New', Courier, monospace
 		}
 		
 		.grid {
@@ -27,7 +27,7 @@
 			grid-column: 1/2;
 			grid-row: 1/3;
 			color: rgb(235, 235, 235);
-			background: rgb(207, 207, 207);
+			background: rgb(218, 216, 216);
 			height: 100%;
 			width: 100%;
 			display: flex;
@@ -103,7 +103,6 @@
 			font-size: 1.5em;
 			border: 2px solid white;
 			padding: 5px;
-			cursor: pointer;
 		}
 		
 		#form-label {
@@ -155,9 +154,8 @@
 				font-weight: bold;
 			}
 			input[type=submit] {
-				height: 50px;
-				padding: 5px;
-				cursor: pointer;
+				margin-top: 5px;
+				height: 35px;
 			}
 		}
 		
@@ -207,8 +205,7 @@
 						<f:validateLength minimum="3" maximum="24" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="fnError"><h:message for="firstName" /></span>
-					<br />
+					<span class="errMsg" id="fnError"><h:message for="firstName" /></span><br/>
 					<h:outputLabel for="lastName" value="Last Name" />
 					<br />
 					<h:inputText id="lastName" name="lastName"
@@ -219,8 +216,7 @@
 						<f:validateLength minimum="2" maximum="24" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="lnError"><h:message for="lastName" /></span>
-					<br />
+					<span class="errMsg" id="lnError"><h:message for="lastName" /></span><br/>
 					<h:outputLabel for="email" value="Email" />
 					<br />
 					<h:inputText id="email" name="email" value="#{javaBean.email}"
@@ -228,9 +224,8 @@
 						a:placeholder="Enter your Email">
 
 					</h:inputText>
-					<br />
-					<span class="errMsg" id="eError"><h:message for="email" /></span>
-					<br />
+					<br/>
+					<span class="errMsg" id="eError"><h:message for="email" /></span><br/>
 					<h:outputLabel for="contactNumber" value="Contact Number" />
 					<br />
 					<h:inputText id="contactNumber" name="contactNumber"
@@ -242,8 +237,7 @@
 					</h:inputText>
 					<br />
 					<span class="errMsg" id="conError"><h:message
-							for="contactNumber" /></span>
-					<br />
+							for="contactNumber" /></span><br/>
 					<h:outputLabel for="age" value="Age" />
 					<h:inputText id="age" name="age" value="#{javaBean.age}"
 						required="true" requiredMessage="Age is required"
@@ -252,10 +246,8 @@
 						<f:validateDoubleRange minimum="18" maximum="70" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="ageError"><h:message for="age" /></span>
-					<br />
-					<h:commandButton value="Submit" action="#{javaBean.proceed}"
-						id="submit" />
+					<span class="errMsg" id="ageError"><h:message for="age" /></span><br/>
+					<h:commandButton value="Submit" action="#{javaBean.proceed}" id="submit" />
 				</h:form>
 			</div>
 		</div>
@@ -358,32 +350,26 @@
 	        }
 	    }
 	    for (let i = 0; i &lt; square.length; i++) {
-	        square[i].addEventListener('click', () => {
+	        square[i].addEventListener('click', (e) => {
+	        	
 	            let red = Math.round(Math.random() * 150)
 	            let green = Math.round(Math.random() * 150)
 	            let blue = Math.round(Math.random() * 150)
-	            square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
-                loginBg[0].style.background = "rgb(" + red + ", " + green + ", " + blue + ")"
-                loginBg[0].style.transition = "0.5s"
-                if (i == 0) {
-                	square[i].style.background = "rgb(207, 207, 207)"
-                }
-                
+	            if (i % 2 == 0) {
+	                square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
+	                loginBg[0].style.background = "rgb(" + red + ", " + green + ", " + blue + ")"
+	                loginBg[0].style.transition = "0.5s"
+	            } else {
+	                square[i].style.backgroundColor = "rgb(" + blue + ", " + red + ", " + green + ")"
+	                loginBg[0].style.background = "rgb(" + blue + ", " + red + ", " + green + ")"
+	                loginBg[0].style.transition = "0.5s"
+	            }
 	            for (let i = 0; i &lt; label.length; i++) {
 	                label[i].style.color = "white"
 	                formLabel.style.color = "white"
 	            }
 	        })
 	    }
-	    
-	    square[0].style.background = "rgb(207, 207, 207)"
-	    square[0].addEventListener('click', () => {
-	    	loginBg[0].style.background = "rgb(207, 207, 207)"
-	    	for (let i = 0; i &lt; label.length; i++) {
-	    		label[i].style.color = "black"
-	    		formLabel.style.color = "black"
-	    	}
-	    })
 	</script>
 </h:body>
 </html>

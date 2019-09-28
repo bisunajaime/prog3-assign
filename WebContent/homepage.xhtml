@@ -6,7 +6,729 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Response Page</title>
-	<h:outputStylesheet name="design/home.css"/>
+	<!-- <h:outputStylesheet name="design/home.css"/> -->
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			font-family: 'Courier New', Courier, monospace;
+		}
+		
+		body {
+			overflow: hidden;
+		}
+		
+		.bg {
+			background: #e6e4e4;
+			/* #cc5333 */
+			height: 100vh;
+			width: 100%;
+			position: absolute;
+			z-index: -1000;
+		}
+		
+		.content {
+			display: grid;
+			height: 100vh;
+			width: 100%;
+			grid-template-columns: repeat(2, 50%);
+			grid-template-rows: repeat(2, 50%);
+		}
+		
+		.img-showcase {
+			grid-row: 1/3;
+			grid-column: 2/3;
+			position: relative;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-around;
+			height: 100%;
+		}
+		
+		.orange {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			transition: 0.25s;
+			background: #b43527;
+			flex-direction: column;
+		}
+		
+		.orange:hover {
+			transition: 0.25s;
+		}
+		
+		.blue-hide {
+			opacity: 0;
+			transform: translate(0%, 0%)
+		}
+		
+		#orange {
+			width: 60%;
+			padding: 50px;
+			transition: 0.25s;
+			cursor: pointer;
+		}
+		
+		#orange:hover {
+			transition: 0.25s;
+			background: #88bbd0;
+			box-shadow: 5px 5px 10px #0f0c29;
+		}
+		
+		.orange h1 {
+			color: white;
+			font-size: 50px;
+		}
+		
+		.blue {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			transition: 0.25s;
+			background: #7389a3;
+			flex-direction: column;
+		}
+		
+		.blue:hover {
+			transition: 0.25s;
+		}
+		
+		.blue h1 {
+			font-size: 50px;
+		}
+		
+		#blue {
+			width: 60%;
+			padding: 50px;
+			transition: 0.25s;
+		}
+		
+		#blue:hover {
+			transition: 0.25s;
+			background: #b43527;
+			box-shadow: 5px 5px 10px #0f0c29;
+			cursor: pointer;
+		}
+		
+		.img-details {
+			grid-row: 1/3;
+			grid-column: 1/2;
+			background: rgb(22, 22, 22);
+			color: #e6e4e4;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: center;
+			transition: 0.25s;
+			transform: translate(0%, 0%);
+		}
+		
+		.img-details hr {
+			width: 80%;
+			margin-bottom: 40px;
+		}
+		
+		.img-details h1 {
+			font-size: 4.5em;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+		
+		.img-details p {
+			max-width: 90%;
+			font-size: 1.3em;
+			text-align: justify;
+			font-family: 'Courier New', Courier, monospace;
+			font-weight: 900;
+			text-indent: 2.5em;
+		}
+		
+		.img-details p::selection {
+			background: #203a43;
+			color: #e6e4e4;
+		}
+		
+		.img-details-hide {
+			opacity: 0;
+			transition: 0.25s;
+		}
+		
+		.img-details a {
+			text-decoration: none;
+			color: white;
+			max-width: 40%;
+			text-align: center;
+			margin-top: 30px;
+			border: 3px solid white;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 1.2em;
+			padding: 10px;
+			transition: 0.2s;
+		}
+		
+		.img-details a:hover {
+			background-color: white;
+			color: black;
+			transition: 0.25s;
+		}
+		
+		@
+		keyframes sho-animate {from { transform:rotateZ(0deg);
+			
+		}
+		
+		to {
+			transform: rotateZ(360deg);
+		}
+		
+		}
+		.orange-details {
+			grid-column: 2/3;
+			grid-row: 1/3;
+			height: 100%;
+			width: 100%;
+			background: #25252c;
+			transform: translate(-100%, -100%);
+			transition: 0.25s;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+		
+		.burger {
+			height: 5vh;
+			width: 100%;
+			background: transparent;
+			display: flex;
+			align-items: flex-end;
+			justify-content: flex-start;
+			flex-direction: column;
+		}
+		
+		.burger span {
+			color: white;
+			font-size: 60px;
+			margin-right: 30px;
+		}
+		
+		.burger span:hover {
+			cursor: pointer;
+		}
+		
+		.orange-details-display {
+			transform: translate(-100%, 0%);
+			background-color: #161618;
+			color: #b43527;
+			transition: 0.25s;
+			z-index: 1000;
+		}
+		
+		.orange-data {
+			display: flex;
+			align-items: center;
+			height: 90vh;
+			justify-content: center;
+			flex-direction: column;
+		}
+		
+		.orange-data h1 {
+			margin-bottom: 30px;
+			color: white;
+			font-size: 5.3em;
+			color: #161618;
+			background: #f56f60;
+			padding: 20px;
+		}
+		
+		.orange-data hr {
+			width: 80%;
+			margin-bottom: 30px;
+			color: #f56f60;
+		}
+		
+		.orange-data p {
+			max-width: 70%;
+			font-size: 1.5em;
+			text-align: justify;
+			color: white;
+			font-weight: 700;
+			text-indent: 2.5em;
+		}
+		
+		.orange-data p::selection {
+			background: #f56f60;
+			color: black;
+		}
+		
+		.orange-price {
+			color: #f56f60;
+			margin-top: 20px;
+			font-size: 1.4em;
+			border: 1px solid white;
+			padding: 20px;
+			font-weight: 600;
+			border: 4px solid transparent;
+		}
+		
+		.orange-price:hover {
+			cursor: pointer;
+			transition: 0.25s ease-in;
+			border: 4px solid #e74432;
+		}
+		
+		.orange-price:active {
+			background: #f56f60;
+			transition: 0.1s;
+			color: black;
+		}
+		
+		.blue-details {
+			grid-column: 2/3;
+			grid-row: 1/3;
+			height: 100%;
+			width: 100%;
+			background: #25252c;
+			transform: translate(-100%, 100%);
+			transition: 0.25s;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			transition: 0.25s;
+		}
+		
+		.blue-details-display {
+			transform: translate(-100%, 0%);
+			background-color: #161618;
+			color: #b43527;
+			transition: 0.25s;
+			z-index: 1000;
+		}
+		
+		.blue-data {
+			display: flex;
+			align-items: center;
+			height: 90vh;
+			justify-content: center;
+			flex-direction: column;
+		}
+		
+		.blue-data h1 {
+			margin-bottom: 30px;
+			color: white;
+			font-size: 5.3em;
+			color: #25252c;
+			background: #88bbd0;
+			padding: 20px;
+		}
+		
+		.blue-data hr {
+			width: 80%;
+			margin-bottom: 30px;
+			color: #88bbd0;
+		}
+		
+		.blue-data p {
+			max-width: 70%;
+			font-size: 1.5em;
+			text-align: justify;
+			color: white;
+			font-weight: 700;
+			text-indent: 2.5em;
+		}
+		
+		.blue-data p::selection {
+			background: #88bbd0;
+			color: black;
+		}
+		
+		.blue-price {
+			color: #88bbd0;
+			margin-top: 10px;
+			font-size: 1.4em;
+			border: 1px solid white;
+			padding: 20px;
+			font-weight: 600;
+			border: 4px solid transparent;
+		}
+		
+		.blue-price:hover {
+			cursor: pointer;
+			transition: 0.25s ease-in;
+			border: 4px solid #88bbd0;
+		}
+		
+		.blue-price:active {
+			background: #88bbd0;
+			transition: 0.1s;
+			color: black;
+		}
+		
+		#nav {
+			display: none;
+		}
+		
+		.adidas-logo {
+			grid-column: 1/2;
+			grid-row: 1/3;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center
+		}
+		
+		#adidas {
+			width: 50%;
+		}
+		
+		.slogan {
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		    flex-direction: column;
+		    width: 100%;
+		
+		}
+		
+		.slogan span {
+		    font-size: 2.5em;
+		    color: #88bbd0;
+		    text-align: center;
+		}
+		
+		.slogan-o span{
+		    color: #f56f60;
+		}
+		
+		@media only screen and (max-width: 1200px) {
+			.img-showcase {
+				grid-row: 1/2;
+				grid-column: 1/3;
+				flex-direction: row;
+			}
+			.img-details {
+				grid-row: 2/3;
+				grid-column: 1/3;
+			}
+			.img-details hr {
+				width: 90%;
+			}
+			.img-details h1 {
+				font-size: 4.0em;
+			}
+			.img-details p {
+				font-size: 1.1em;
+				max-width: 90%;
+			}
+			.orange-details {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				transform: translate(-100%, 0%)
+			}
+			.orange-details-display {
+				transform: translate(0%, 0%);
+			}
+			.orange-data h1 {
+				font-size: 4.2em;
+			}
+			.orange-data p {
+				font-size: 1.1em;
+				max-width: 90%;
+			}
+			.orange-price {
+				padding: 10px;
+				font-size: 1.2em;
+				margin-top: 10px;
+			}
+			.blue-details {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				transform: translate(100%, 0%);
+			}
+			.blue-details-display {
+				transform: translate(0%, 0%)
+			}
+			.blue-data h1 {
+				font-size: 4.2em;
+			}
+			.blue-data p {
+				font-size: 1.1em;
+				max-width: 90%;
+			}
+			.blue-price {
+				padding: 10px;
+				font-size: 1.2em;
+				margin-top: 10px;
+			}
+			
+			.slogan span {
+		        font-size: 1.6em;
+		        color: #88bbd0;
+		    }
+		
+		    .slogan-o span {
+		        color: #f56f60;
+		    }
+		}
+		
+		@media only screen and (min-width: 0px) and (max-width: 320px) {
+			* {
+				display: none;
+			}
+		}
+		
+		@media only screen and (min-width: 320px) and (max-width: 600px) {
+			* {
+				overflow: hidden;
+			}
+			.orange h1 {
+				display: none;
+			}
+			.blue h1 {
+				display: none;
+			}
+			#orange {
+				transform: rotate(270deg);
+				padding: 0;
+				width: 100%;
+			}
+			#blue {
+				transform: rotate(270deg);
+				padding: 0;
+				width: 100%;
+			}
+			.img-showcase {
+				grid-row: 1/2;
+				grid-column: 1/3;
+				flex-direction: row;
+			}
+			.img-details {
+				grid-row: 2/3;
+				grid-column: 1/3;
+			}
+			.img-details hr {
+				width: 90%;
+			}
+			.img-details h1 {
+				font-size: 1.0em;
+			}
+			.img-details p {
+				font-size: 0.6em;
+				max-width: 80%;
+			}
+			.orange-details {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				transform: translate(-100%, 0%)
+			}
+			.orange-details-display {
+				transform: translate(0%, 0%);
+			}
+			.orange-data h1 {
+				margin-top: 5%;
+				font-size: 1.5em;
+			}
+			.orange-data p {
+				font-size: 0.6em;
+				max-width: 80%;
+			}
+			.orange-price {
+				padding: 10px;
+				font-size: 0.9em;
+				margin-top: 10px;
+			}
+			.blue-details {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				transform: translate(100%, 0%);
+			}
+			.blue-details-display {
+				transform: translate(0%, 0%)
+			}
+			.blue-data h1 {
+				margin-top: 5%;
+				font-size: 1.5em;
+			}
+			.blue-data p {
+				font-size: 0.6em;
+				max-width: 80%;
+			}
+			.blue-price {
+				padding: 10px;
+				font-size: 0.9em;
+				margin-top: 10px;
+			}
+			.burger {
+				display: none;
+				width: 100%;
+				height: 10vh;
+				color: white;
+				z-index: 2000;
+			}
+			.img-details a {
+				width: 100%;
+			}
+			#nav {
+				display: block;
+				position: fixed;
+				z-index: 2000;
+				bottom: 2%;
+				right: 2%;
+				height: 60px;
+				width: 60px;
+				border: transparent;
+				border-radius: 50%;
+				background: black;
+				color: #e6e4e4;
+				font-weight: bold;
+				border: 1px solid white;
+				cursor: pointer;
+			}
+			.adidas-logo {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center
+			}
+			
+			.slogan span {
+		        color: #88bbd0;
+		        font-size: 1em;
+		        margin-bottom: 10px;
+		    }
+		
+		    .slogan-o span {
+		        color: #f56f60;
+		        font-size: 1em;
+		        margin-bottom: 10px;
+		    }
+		}
+		
+		@media only screen and (min-width: 600px) and (max-width: 1200px) {
+			* {
+				overflow: hidden;
+			}
+			.orange h1 {
+				display: block;
+				font-size: 2.5em;
+			}
+			.blue h1 {
+				display: block;
+				font-size: 2.5em;
+			}
+			#orange {
+				transform: rotate(0deg);
+				padding: 0px;
+				width: 70%;
+				padding: 30px;
+			}
+			#blue {
+				transform: rotate(0deg);
+				padding: 0;
+				width: 70%;
+				padding: 30px;
+			}
+			.img-showcase {
+				grid-row: 1/2;
+				grid-column: 1/3;
+				flex-direction: row;
+			}
+			.img-details {
+				grid-row: 2/3;
+				grid-column: 1/3;
+			}
+			.img-details hr {
+				width: 90%;
+			}
+			.img-details h1 {
+				font-size: 3.0em;
+			}
+			.img-details p {
+				font-size: 1.1em;
+				max-width: 80%;
+			}
+			.orange-data h1 {
+				font-size: 2.5em;
+			}
+			.orange-data p {
+				font-size: 1.0em;
+				max-width: 80%;
+			}
+			.orange-price {
+				padding: 10px;
+				font-size: 1.1em;
+				margin-top: 20px;
+			}
+			.blue-details {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				transform: translate(100%, 0%);
+			}
+			.blue-details-display {
+				transform: translate(0%, 0%)
+			}
+			.blue-data h1 {
+				font-size: 2.5em;
+			}
+			.blue-data p {
+				font-size: 1em;
+				max-width: 80%;
+			}
+			.blue-price {
+				padding: 10px;
+				font-size: 1.1em;
+				margin-top: 20px;
+			}
+			.burger {
+				display: none;
+				width: 100%;
+				height: 10vh;
+				color: white;
+			}
+			.img-details a {
+				width: 100%;
+			}
+			#nav {
+				display: block;
+				position: fixed;
+				z-index: 2000;
+				bottom: 5%;
+				right: 5%;
+				height: 80px;
+				width: 80px;
+				border: transparent;
+				border-radius: 50%;
+				background: black;
+				color: #e6e4e4;
+				font-weight: bold;
+				font-size: 1.2em;
+				border: 1px solid white;
+				cursor: pointer;
+			}
+			.adidas-logo {
+				grid-column: 1/3;
+				grid-row: 2/3;
+				width: 100%;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center
+			}
+		}
+	</style>
 </h:head>
 	
 <h:body>
@@ -20,12 +742,12 @@
 		<div class="img-showcase">
 			<div class="orange">
 				<h:graphicImage value="/resources/img/orange-gray.png" id="orange"/>
-				<h1>Orange Shoe</h1>
+				<h1>Boston 6</h1>
 			</div>
 			<div class="blue">
 				<!-- <img src="resources/img/gray-orange.png" alt="" id="blue"/> -->
 				<h:graphicImage value="/resources/img/gray-orange.png" id="blue"/>
-				<h1>Blue Shoe</h1>
+				<h1>Supernova ST</h1>
 			</div>
 		</div>
 		<div class="orange-details">
@@ -33,16 +755,15 @@
 				<span id="exitOrange">X</span>
 			</div>
 			<div class="orange-data">
-				<h1>Orange Shoe</h1>
+				<h1>Boston 6</h1>
 				<hr></hr>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Excepturi dignissimos sit delectus nemo corporis dolores ratione
-					aspernatur nostrum cum quae aperiam dolorem, debitis blanditiis
-					itaque natus dolor, soluta molestiae ut unde assumenda, quasi
-					pariatur totam. Laborum officiis voluptatum tempore esse nesciunt
-					quaerat sint commodi necessitatibus ab laudantium, animi laboriosam
-					voluptatibus.</p>
-				<span class="orange-price">Php 1,999.99</span>
+				<p>Crafted by Japanese master cobbler Omori, these men's running shoes deliver a light ride. 
+				A boost™ midsole releases energy from your touchdown to propel you forward, while a lightweight mesh upper with targeted support provides a breathable, locked-down fit.</p>
+				<span class="orange-price">Php 1,799.99</span>
+				<div class="slogan slogan-o">
+                    <span>Shoes designed with a precision</span>
+                    <span> fit for a light ride.</span>
+                </div>
 			</div>
 		</div>
 		<div class="blue-details">
@@ -50,16 +771,15 @@
 				<span id="exitBlue">X</span>
 			</div>
 			<div class="blue-data">
-				<h1>Blue Shoe</h1>
+				<h1>Supernova ST</h1>
 				<hr></hr>
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Excepturi dignissimos sit delectus nemo corporis dolores ratione
-					aspernatur nostrum cum quae aperiam dolorem, debitis blanditiis
-					itaque natus dolor, soluta molestiae ut unde assumenda, quasi
-					pariatur totam. Laborum officiis voluptatum tempore esse nesciunt
-					quaerat sint commodi necessitatibus ab laudantium, animi laboriosam
-					voluptatibus.</p>
-				<span class="blue-price">Php 1,999.99</span>
+				<p>Blast away from the pack in these men's stability running shoes. Designed for the dedicated, 
+				they feature dual-density Boost cushioning for an energised, extra-stable stride. The engineered mesh upper is lightweight and breathable, while the grippy outsole adds superior traction.</p>
+				<span class="blue-price">Php 1,949.99</span>
+				<div class="slogan slogan-b">
+					<span>Award-winning running shoes</span>
+					<span>With extra stability</span>
+				</div>
 			</div>
 		</div>
 		<div class="img-details">

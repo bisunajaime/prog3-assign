@@ -381,6 +381,24 @@ to {
 	width: 50%;
 }
 
+.slogan {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.slogan span {
+    font-size: 3em;
+    color: #88bbd0;
+}
+
+.slogan-o span{
+    color: #f56f60;
+}
+
 @media only screen and (max-width: 1200px) {
 	.img-showcase {
 		grid-row: 1/2;
@@ -441,6 +459,15 @@ to {
 		font-size: 1.2em;
 		margin-top: 10px;
 	}
+	
+	.slogan span {
+        font-size: 1.6em;
+        color: #88bbd0;
+    }
+
+    .slogan-o span {
+        color: #f56f60;
+    }
 }
 
 @media only screen and (min-width: 0px) and (max-width: 320px) {
@@ -565,6 +592,18 @@ to {
 		align-items: center;
 		justify-content: center
 	}
+	
+	.slogan span {
+        color: #88bbd0;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+
+    .slogan-o span {
+        color: #f56f60;
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1200px) {
