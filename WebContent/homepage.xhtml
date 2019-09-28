@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"	
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Response Page</title>
+	<h:outputStylesheet name="design/home.css"/>
+</h:head>
+	
+<h:body>
+	<div class="bg"></div>
+	<button id="nav">Home</button>
+	<div class="content">
+		<div class="adidas-logo">
+			<!-- <img src="resources/img/Adidas_Logo.svg" alt="" id="adidas"/> -->
+			<h:graphicImage value="/resources/img/Adidas_Logo.svg" id="adidas"/>
+		</div>
+		<div class="img-showcase">
+			<div class="orange">
+				<h:graphicImage value="/resources/img/orange-gray.png" id="orange"/>
+				<h1>Orange Shoe</h1>
+			</div>
+			<div class="blue">
+				<!-- <img src="resources/img/gray-orange.png" alt="" id="blue"/> -->
+				<h:graphicImage value="/resources/img/gray-orange.png" id="blue"/>
+				<h1>Blue Shoe</h1>
+			</div>
+		</div>
+		<div class="orange-details">
+			<div class="burger">
+				<span id="exitOrange">X</span>
+			</div>
+			<div class="orange-data">
+				<h1>Orange Shoe</h1>
+				<hr></hr>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Excepturi dignissimos sit delectus nemo corporis dolores ratione
+					aspernatur nostrum cum quae aperiam dolorem, debitis blanditiis
+					itaque natus dolor, soluta molestiae ut unde assumenda, quasi
+					pariatur totam. Laborum officiis voluptatum tempore esse nesciunt
+					quaerat sint commodi necessitatibus ab laudantium, animi laboriosam
+					voluptatibus.</p>
+				<span class="orange-price">Php 1,999.99</span>
+			</div>
+		</div>
+		<div class="blue-details">
+			<div class="burger">
+				<span id="exitBlue">X</span>
+			</div>
+			<div class="blue-data">
+				<h1>Blue Shoe</h1>
+				<hr></hr>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Excepturi dignissimos sit delectus nemo corporis dolores ratione
+					aspernatur nostrum cum quae aperiam dolorem, debitis blanditiis
+					itaque natus dolor, soluta molestiae ut unde assumenda, quasi
+					pariatur totam. Laborum officiis voluptatum tempore esse nesciunt
+					quaerat sint commodi necessitatibus ab laudantium, animi laboriosam
+					voluptatibus.</p>
+				<span class="blue-price">Php 1,999.99</span>
+			</div>
+		</div>
+		<div class="img-details">
+			<h1>Welcome,<br/> #{javaBean.firstName} #{javaBean.lastName}</h1>
+			<hr></hr>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
+				sequi quae. Animi harum officiis obcaecati incidunt aut at voluptas,
+				deserunt vel. Incidunt sint eum aperiam ipsa obcaecati, praesentium
+				enim molestiae illum dolore? Nesciunt asperiores quos cupiditate
+				consectetur doloremque. Quibusdam alias nulla accusamus aut beatae
+				voluptatibus laborum pariatur tempora fuga sunt qui nobis debitis
+				cumque culpa labore facere delectus iure eum, ratione quos soluta
+				harum consectetur suscipit distinctio!</p>
+			<a href="index.xhtml" class="back">Back</a>
+		</div>
+	</div>
+	<script>
+		const orange = document.getElementById('orange')
+		const blue = document.getElementById('blue')
+		const orangeDiv = document.getElementsByClassName('orange')
+		const blueDiv = document.getElementsByClassName('blue')
+		const imgShowcase = document.getElementsByClassName('img-showcase')
+		const orangeDetails = document.getElementsByClassName('orange-details')
+		const blueDetails = document.getElementsByClassName('blue-details')
+		const details = document.getElementsByClassName('img-details')
+		const exitOrange = document.getElementById('exitOrange')
+		const exitBlue = document.getElementById('exitBlue')
+		const nav = document.getElementById('nav')
+	
+		orange.addEventListener('click', () => {
+		    if (blueDetails[0].classList.contains('blue-details-display')) {
+		        blueDetails[0].classList.remove('blue-details-display')
+		        setTimeout(() => {
+		            orangeDetails[0].classList.add('orange-details-display')
+		        }, 300)
+		        
+		    } else {
+		        details[0].classList.add('img-details-hide')
+		        setTimeout(() => {
+		            orangeDetails[0].classList.add('orange-details-display')
+		        }, 300)
+		    }
+		})
+	
+		exitOrange.addEventListener('click', () => {
+		    orangeDetails[0].classList.remove('orange-details-display')
+		    setTimeout(() => {
+		        details[0].classList.remove('img-details-hide')
+		    }, 300)
+		})
+	
+		blue.addEventListener('click', () => {
+		    if(orangeDetails[0].classList.contains('orange-details-display')) {
+		        orangeDetails[0].classList.remove('orange-details-display')
+		        setTimeout(() => {
+		            blueDetails[0].classList.add('blue-details-display')
+		        }, 300)
+		    }else {
+		        details[0].classList.add('img-details-hide')
+		        setTimeout(() => {
+		            blueDetails[0].classList.add('blue-details-display')
+		        }, 300)
+		    }
+		})
+	
+		exitBlue.addEventListener('click', () => {
+		    blueDetails[0].classList.remove('blue-details-display')
+		    setTimeout(() => {
+		        details[0].classList.remove('img-details-hide')
+		    }, 300)
+		})
+	
+		nav.addEventListener('click', () => {
+		    if (orangeDetails[0].classList.contains('orange-details-display') ||
+		        blueDetails[0].classList.contains('blue-details-display')) {
+		        orangeDetails[0].classList.remove('orange-details-display')
+		        blueDetails[0].classList.remove('blue-details-display')
+		        setTimeout(() => {
+		            details[0].classList.remove('img-details-hide')
+		        }, 300)
+		    }
+		})
+	</script>
+</h:body>
+
+</html>
