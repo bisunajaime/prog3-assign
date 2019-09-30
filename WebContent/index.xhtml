@@ -48,7 +48,7 @@
 		}
 		
 		.square {
-			border: 3px solid rgb(223, 223, 223);
+			border: 1px solid rgb(223, 223, 223);
 			height: 100%;
 			grid-gap: 20px;
 			transition: 0.25s;
@@ -118,7 +118,7 @@
 			letter-spacing: 2px;
 		}
 		
-		@media only screen and (min-width: 320px) and (max-width: 600px) {
+		@media only screen and (min-width: 0px) and (max-width: 600px) {
 			.grid {
 				grid-template-columns: 50% 50%;
 				grid-template-rows: 70% 30%
@@ -237,7 +237,7 @@
 						value="#{javaBean.contactNumber}" required="true"
 						requiredMessage="Contact Number is required"
 						a:placeholder="Enter your Contact Number"
-						validatorMessage="Invalid Contact Number" autocomplete="off">
+						validatorMessage="Invalid Contact Number" autocomplete="off" styleClass="input-number">
 						<f:validateRegex pattern="\d{4}-\d{3}-\d{4}" />
 					</h:inputText>
 					<br />
@@ -261,7 +261,8 @@
 		</div>
 		<div class="bg"></div>
 	</div>
-
+	
+	<h:outputScript name="js/cleave.min.js"/>
 	<script>
 		const square = document.getElementsByClassName('square')
 	    const bg = document.getElementsByClassName('bg')
@@ -284,7 +285,11 @@
 		const ageError = document.getElementById('ageError')
 		const redB = "2px solid red";
 		const greenB = "2px solid #6fde79";
-	
+		
+		const cleave = new Cleave('.input-number', {
+            delimiter: '-',
+            blocks: [4, 3, 4]
+        })
 
 		firstName.addEventListener('keyup', (e) => {
 			if(firstName.value.trim().length &lt; 3 || firstName.value.trim().length &gt; 24) {

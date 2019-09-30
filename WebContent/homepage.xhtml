@@ -85,6 +85,11 @@
 			font-size: 50px;
 		}
 		
+		.orange h1::selection {
+			background: #f56f60;
+			color: black;
+		}
+		
 		.blue {
 			width: 100%;
 			height: 100%;
@@ -102,6 +107,11 @@
 		
 		.blue h1 {
 			font-size: 50px;
+		}
+		
+		.blue h1::selection {
+			background: #88bbd0;
+			color: black;
 		}
 		
 		#blue {
@@ -153,8 +163,8 @@
 		}
 		
 		.img-details p::selection {
-			background: #203a43;
-			color: #e6e4e4;
+			background: rgb(236, 236, 236);
+			color: black;
 		}
 		
 		.img-details-hide {
@@ -182,16 +192,6 @@
 			transition: 0.25s;
 		}
 		
-		@
-		keyframes sho-animate {from { transform:rotateZ(0deg);
-			
-		}
-		
-		to {
-			transform: rotateZ(360deg);
-		}
-		
-		}
 		.orange-details {
 			grid-column: 2/3;
 			grid-row: 1/3;
