@@ -251,6 +251,12 @@
 		    flex-direction: column;
 		    flex-wrap: wrap;
 		}
+		
+		.errMsg {
+			font-weight: bold;
+			color: red;
+			letter-spacing: 2px;
+		}
 	</style>
 </h:head>
 <h:body>
@@ -276,13 +282,66 @@
                 <div class="account-details">
                     <h:form>
 	                    <h:outputLabel for="firstName" value="First Name"/>
-	                    <h:inputText id="firstName" name="firstName" value="#{javaBean.firstName}"/>
+	                    <h:inputText 
+	                    	id="firstName" 
+	                    	name="firstName" 
+	                    	value="#{javaBean.firstName}"
+	                    	required="true" 
+	                    	requiredMessage="First Name is required" 
+	                    	a:placeholder="Enter your First Name"
+							validatorMessage="Invalid length">
+							<f:validateLength minimum="3" maximum="24" />
+	                    </h:inputText>
+	                    <br />
+						<span class="errMsg" id="fnError">
+							<h:message for="firstName" /></span>
+						<br />
 	                    <h:outputLabel for="lastName" value="Last Name"/>
-	                    <h:inputText id="lastName" name="lastName" value="#{javaBean.lastName}"/>
+	                    <h:inputText 
+	                    	id="lastName" 
+	                    	name="lastName" 
+	                    	value="#{javaBean.lastName}"
+	                    	required="true"
+							requiredMessage="Last Name is required" 
+							a:placeholder="Enter your Last Name"
+							validatorMessage="Invalid length" 
+							autocomplete="off">
+							<f:validateLength minimum="2" maximum="24" />
+	                    </h:inputText>
+	                    <br />
+						<span class="errMsg" id="lnError">
+							<h:message for="lastName" /></span>
+						<br />
 	                    <h:outputLabel for="email" value="Email"/>
-	                    <h:inputText id="email" name="email" value="#{javaBean.email}"/>
+	                    <h:inputText 
+	                    	id="email" 
+	                    	name="email" 
+	                    	value="#{javaBean.email}"
+							required="true"
+							requiredMessage="Email is required" 
+							a:placeholder="Enter your Email">	                    	
+	                    </h:inputText>
+	                    <br/>
+	                    <span class="errMsg">
+	                    	<h:message for="email"/>
+	                    </span>
+	                    <br/>
 	                    <h:outputLabel for="contactNumber" value="Contact Number" />
-	                    <h:inputText id="contactNumber" name="contactNumber" value="#{javaBean.contactNumber}"/>
+	                    <h:inputText 
+	                    	id="contactNumber" 
+	                    	name="contactNumber" 
+	                    	value="#{javaBean.contactNumber}"
+	                    	requiredMessage="Contact Number is required"
+							a:placeholder="Enter your Contact Number" 
+							validatorMessage="Invalid Contact Number"
+							autocomplete="off">
+	                    	<f:validateRegex pattern="\d{4}-\d{3}-\d{4}" />
+	                    </h:inputText>
+	                    <br/>
+	                    <span class="errMsg">
+	                    	<h:message for="contactNumber"/>
+	                    </span>
+	                    <br/>
                         <div class="input-grp">
                         	<h:commandButton value="Save Changes" action="#{javaBean.update}"/>
                             <input type="reset" value="Clear"></input>

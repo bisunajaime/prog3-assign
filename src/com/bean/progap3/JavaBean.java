@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
-public class JavaBean {
+public class JavaBean{
 	private String firstName;
 	private String lastName;
 	private int age;
