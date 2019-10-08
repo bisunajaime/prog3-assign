@@ -162,6 +162,10 @@
 			text-indent: 2.5em;
 		}
 		
+		.img-details ul li{
+			font-size: 1.3em;
+		}
+		
 		.img-details p::selection {
 			background: rgb(236, 236, 236);
 			color: black;
@@ -178,7 +182,7 @@
 			max-width: 40%;
 			text-align: center;
 			margin-top: 30px;
-			border: 3px solid white;
+			border: 4px solid white;
 			text-transform: uppercase;
 			font-weight: bold;
 			font-size: 1.2em;
@@ -410,6 +414,42 @@
 		    color: #f56f60;
 		}
 		
+		.btn-group {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			width: 90%;
+			flex-wrap: wrap;
+			margin-top: 20px;
+		}
+		
+		#b-f-logout:btn-logout {
+			border: 4px solid white;
+			color: white;
+			background: transparent;
+			padding: 20px;
+			font-size: 1.5em;
+						
+		}
+		
+		#btn-about {
+			border: 4px solid white;
+			color: white;
+			background: transparent;
+			padding: 20px;
+			font-size: 1.5em;
+			
+		}
+		
+		#btn-account {
+			border: 4px solid white;
+			color: white;
+			background: transparent;
+			padding: 20px;
+			font-size: 1.5em;
+			
+		}
+		
 		@media only screen and (max-width: 1200px) {
 			.img-showcase {
 				grid-row: 1/2;
@@ -481,13 +521,7 @@
 		    }
 		}
 		
-		@media only screen and (min-width: 0px) and (max-width: 320px) {
-			* {
-				display: none;
-			}
-		}
-		
-		@media only screen and (min-width: 320px) and (max-width: 600px) {
+		@media only screen and (min-width: 0px) and (max-width: 600px) {
 			* {
 				overflow: hidden;
 			}
@@ -517,7 +551,7 @@
 				grid-column: 1/3;
 			}
 			.img-details hr {
-				width: 90%;
+				width: 60%;
 			}
 			.img-details h1 {
 				font-size: 1.0em;
@@ -525,6 +559,9 @@
 			.img-details p {
 				font-size: 0.6em;
 				max-width: 80%;
+			}
+			.img-details ul li{
+				font-size: 0.6em;
 			}
 			.orange-details {
 				grid-column: 1/3;
@@ -594,6 +631,11 @@
 				border: 1px solid white;
 				cursor: pointer;
 			}
+			#nav:active {
+				transition: 0.25s;
+				background: white;
+				color: black;
+			}
 			.adidas-logo {
 				grid-column: 1/3;
 				grid-row: 2/3;
@@ -656,9 +698,8 @@
 			.img-details h1 {
 				font-size: 3.0em;
 			}
-			.img-details p {
+			.img-details ul li{
 				font-size: 1.1em;
-				max-width: 80%;
 			}
 			.orange-data h1 {
 				font-size: 2.5em;
@@ -785,15 +826,22 @@
 		<div class="img-details">
 			<h1>Welcome,<br/> #{javaBean.firstName} #{javaBean.lastName}</h1>
 			<hr></hr>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit,
-				sequi quae. Animi harum officiis obcaecati incidunt aut at voluptas,
-				deserunt vel. Incidunt sint eum aperiam ipsa obcaecati, praesentium
-				enim molestiae illum dolore? Nesciunt asperiores quos cupiditate
-				consectetur doloremque. Quibusdam alias nulla accusamus aut beatae
-				voluptatibus laborum pariatur tempora fuga sunt qui nobis debitis
-				cumque culpa labore facere delectus iure eum, ratione quos soluta
-				harum consectetur suscipit distinctio!</p>
-			<a href="index.xhtml" class="back">Back</a>
+			<ul>
+				<li><h2>Age: #{javaBean.age}</h2></li>
+				<li><h2>Contact: #{javaBean.contactNumber}</h2></li>
+				<li><h2>Email: #{javaBean.email}</h2></li>
+			</ul>
+			<div class="btn-group">
+				<h:form id="b-f-logout">
+					<h:commandLink action="#{javaBean.logout}" value="Logout" id="btn-logout"/>
+				</h:form>
+				<h:form id="b-f-account">
+					<h:commandLink action="account.xhtml" value="Account" id="btn-account"/>
+				</h:form>
+				<h:form id="b-f-about">
+					<h:commandLink action="about.xhtml" value="About Us" id="btn-about"/>
+				</h:form>
+			</div>
 		</div>
 	</div>
 	<script>

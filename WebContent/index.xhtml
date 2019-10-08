@@ -1,11 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:f="http://java.sun.com/jsf/core">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Response Page</title>
-	<!-- <h:outputStylesheet name="design/style.css"/> --> 
+	<!-- <h:outputStylesheet name="design/style.css"/> -->
 	<style>
 		* {
 			padding: 0;
@@ -14,7 +12,7 @@
 			overflow: hidden;
 			font-family: 'Open Sans', sans-serif;
 		}
-		
+
 		.grid {
 			display: grid;
 			grid-template-columns: repeat(2, 50%);
@@ -22,7 +20,7 @@
 			height: 100vh;
 			width: 100%;
 		}
-		
+
 		.login {
 			grid-column: 1/2;
 			grid-row: 1/3;
@@ -35,7 +33,7 @@
 			justify-content: center;
 			flex-direction: column;
 		}
-		
+
 		.bg {
 			width: 100%;
 			height: 100%;
@@ -46,7 +44,7 @@
 			grid-template-rows: repeat(auto-fill, 20%);
 			background: rgb(236, 236, 236);
 		}
-		
+
 		.square {
 			border: 1px solid rgb(223, 223, 223);
 			height: 100%;
@@ -54,37 +52,37 @@
 			transition: 0.25s;
 			cursor: none;
 		}
-		
+
 		.square:hover {
 			background: rgb(231, 230, 230);
 			transition: 0.25s;
 			cursor: pointer;
 		}
-		
+
 		.square:active {
 			background: white;
 			transition: 0.25s;
 			opacity: 0.5;
 		}
-		
+
 		.bg-white {
 			background: rgb(134, 87, 87);
 		}
-		
+
 		.login img {
 			margin-bottom: 30px;
 		}
-		
+
 		.form {
 			width: 70%;
 		}
-		
+
 		.form label {
 			font-size: 1.8em;
 			color: black;
 			text-align: center;
 		}
-		
+
 		input {
 			display: inline-block;
 			height: 35px;
@@ -93,7 +91,7 @@
 			font-size: 1.5em;
 			border: 2px solid black;
 		}
-		
+
 		input[type=submit] {
 			width: 100%;
 			margin-top: 10px;
@@ -105,11 +103,11 @@
 			padding: 5px;
 			cursor: pointer;
 		}
-		
+
 		#form-label {
 			display: none;
 		}
-		
+
 		.errMsg {
 			color: #DA4453;
 			font-size: 17px;
@@ -117,36 +115,44 @@
 			font-weight: bold;
 			letter-spacing: 2px;
 		}
-		
+
 		@media only screen and (min-width: 0px) and (max-width: 600px) {
 			.grid {
 				grid-template-columns: 50% 50%;
 				grid-template-rows: 70% 30%
 			}
+
 			.login {
 				grid-column: 1/3;
 				grid-row: 1/2
 			}
+
 			.bg {
 				grid-column: 1/3;
 				grid-row: 2/3;
 			}
+
 			.form {
 				display: none;
 			}
+
 			#img {
 				cursor: pointer;
 			}
+
 			.form-unhide {
 				display: block;
 				width: 90%;
 			}
+
 			.form-unhide label {
 				font-size: 1.2em;
 			}
+
 			.hide-img {
 				display: none;
 			}
+
 			input[type=text] {
 				width: 100%;
 				height: 10px;
@@ -154,33 +160,39 @@
 				font-size: 0.8em;
 				font-weight: bold;
 			}
+
 			input[type=submit] {
 				height: 50px;
 				padding: 5px;
 				cursor: pointer;
 			}
 		}
-		
+
 		@media only screen and (min-width: 600px) and (max-width: 1000px) {
 			.grid {
 				grid-template-columns: 50% 50%;
 				grid-template-rows: 70vh 30vh;
 			}
+
 			.login {
 				grid-column: 1/3;
 				grid-row: 1/2;
 			}
+
 			.bg {
 				grid-column: 1/3;
 				grid-row: 2/3;
 			}
+
 			.login {
 				flex-direction: row;
 				justify-content: space-around;
 			}
+
 			.form {
 				width: 50%;
 			}
+
 			#form-label {
 				display: block;
 				color: black;
@@ -199,81 +211,77 @@
 				<h1 id="form-label">Enter Information</h1>
 				<h:form id="form">
 					<h:outputLabel for="firstName" value="First Name" />
-					<h:inputText id="firstName" name="firstName"
-						value="#{javaBean.firstName}" required="true"
-						requiredMessage="First Name is required"
-						a:placeholder="Enter your First Name"
+					<h:inputText id="firstName" name="firstName" value="#{javaBean.firstName}" required="true"
+						requiredMessage="First Name is required" a:placeholder="Enter your First Name"
 						validatorMessage="Invalid length" autocomplete="off">
 						<f:validateLength minimum="3" maximum="24" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="fnError"><h:message for="firstName" /></span>
+					<span class="errMsg" id="fnError">
+						<h:message for="firstName" /></span>
 					<br />
 					<h:outputLabel for="lastName" value="Last Name" />
 					<br />
-					<h:inputText id="lastName" name="lastName"
-						value="#{javaBean.lastName}" required="true"
-						requiredMessage="Last Name is required"
-						a:placeholder="Enter your Last Name"
+					<h:inputText id="lastName" name="lastName" value="#{javaBean.lastName}" required="true"
+						requiredMessage="Last Name is required" a:placeholder="Enter your Last Name"
 						validatorMessage="Invalid length" autocomplete="off">
 						<f:validateLength minimum="2" maximum="24" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="lnError"><h:message for="lastName" /></span>
+					<span class="errMsg" id="lnError">
+						<h:message for="lastName" /></span>
 					<br />
 					<h:outputLabel for="email" value="Email" />
 					<br />
-					<h:inputText id="email" name="email" value="#{javaBean.email}"
-						required="true" requiredMessage="Email is required"
-						a:placeholder="Enter your Email">
+					<h:inputText id="email" name="email" value="#{javaBean.email}" required="true"
+						requiredMessage="Email is required" a:placeholder="Enter your Email">
 
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="eError"><h:message for="email" /></span>
+					<span class="errMsg" id="eError">
+						<h:message for="email" /></span>
 					<br />
 					<h:outputLabel for="contactNumber" value="Contact Number" />
 					<br />
-					<h:inputText id="contactNumber" name="contactNumber"
-						value="#{javaBean.contactNumber}" required="true"
-						requiredMessage="Contact Number is required"
-						a:placeholder="Enter your Contact Number"
-						validatorMessage="Invalid Contact Number" autocomplete="off" styleClass="input-number">
+					<h:inputText id="contactNumber" name="contactNumber" value="#{javaBean.contactNumber}"
+						required="true" requiredMessage="Contact Number is required"
+						a:placeholder="Enter your Contact Number" validatorMessage="Invalid Contact Number"
+						autocomplete="off" styleClass="input-number">
 						<f:validateRegex pattern="\d{4}-\d{3}-\d{4}" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="conError"><h:message
-							for="contactNumber" /></span>
+					<span class="errMsg" id="conError">
+						<h:message for="contactNumber" /></span>
 					<br />
 					<h:outputLabel for="age" value="Age" />
-					<h:inputText id="age" name="age" value="#{javaBean.age}"
-						required="true" requiredMessage="Age is required"
-						a:placeholder="Enter your Age"
+					<h:inputText id="age" name="age" value="#{javaBean.age}" required="true"
+						requiredMessage="Age is required" a:placeholder="Enter your Age"
 						validatorMessage="Age must be 18 and above">
 						<f:validateDoubleRange minimum="18" maximum="70" />
 					</h:inputText>
 					<br />
-					<span class="errMsg" id="ageError"><h:message for="age" /></span>
+					<span class="errMsg" id="ageError">
+						<h:message for="age" /></span>
 					<br />
-					<h:commandButton value="Submit" action="#{javaBean.proceed}"
-						id="submit" />
+					<h:commandButton value="Submit" action="#{javaBean.proceed}" id="submit" />
 				</h:form>
 			</div>
 		</div>
 		<div class="bg"></div>
 	</div>
-	
-	<h:outputScript name="js/cleave.min.js"/>
+
+	<h:outputScript name="js/cleave.min.js" />
 	<script>
 		const square = document.getElementsByClassName('square')
-	    const bg = document.getElementsByClassName('bg')
-	    const newSquare = document.createElement("div")
-	    const loginBg = document.getElementsByClassName('login')
-	    const label = document.getElementsByTagName('label')
-	    const img = document.getElementById('img')
-	    const form = document.getElementsByClassName('form')
-	    const formLabel = document.getElementById('form-label')
-	    
-	    const firstName = document.getElementById('form:firstName');
+		const bg = document.getElementsByClassName('bg')
+		const newSquare = document.createElement("div")
+		const loginBg = document.getElementsByClassName('login')
+		const label = document.getElementsByTagName('label')
+		const img = document.getElementById('img')
+		const form = document.getElementsByClassName('form')
+		const formLabel = document.getElementById('form-label')
+
+		const firstName = document.getElementById('form:firstName');
 		const lastName = document.getElementById('form:lastName');
 		const email = document.getElementById('form:email');
 		const contactNo = document.getElementById('form:contactNumber');
@@ -285,56 +293,56 @@
 		const ageError = document.getElementById('ageError')
 		const redB = "2px solid red";
 		const greenB = "2px solid #6fde79";
-		
+
 		const cleave = new Cleave('.input-number', {
-            delimiter: '-',
-            blocks: [4, 3, 4]
-        })
+			delimiter: '-',
+			blocks: [4, 3, 4]
+		})
 
 		firstName.addEventListener('keyup', (e) => {
-			if(firstName.value.trim().length &lt; 3 || firstName.value.trim().length &gt; 24) {
+			if (firstName.value.trim().length &lt; 3 || firstName.value.trim().length &gt; 24) {
 				firstName.style.border = redB
 				fnError.innerHTML = "Invalid length of " + firstName.value.trim().length
-			}else {
+			} else {
 				firstName.style.border = greenB
 				fnError.innerHTML = ""
 			}
 		})
-		
+
 		lastName.addEventListener('keyup', () => {
-			if(lastName.value.trim().length &lt; 2 || lastName.value.trim().length &gt; 24) {
+			if (lastName.value.trim().length &lt; 2 || lastName.value.trim().length &gt; 24) {
 				lastName.style.border = redB
 				lnError.innerHTML = "Invalid length of " + (lastName.value.length)
-			}else {
+			} else {
 				lastName.style.border = greenB
 				lnError.innerHTML = ""
 			}
 		})
-		
+
 		email.addEventListener('keyup', () => {
-			let regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
-			if(email.value.match(regex)) {
+			let regex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+			if (email.value.match(regex)) {
 				email.style.border = greenB
 				eError.innerHTML = ""
-			}else {
+			} else {
 				email.style.border = redB
 				eError.innerHTML = "Email format must follow (example@example.com)"
 			}
 		})
-		
+
 		contactNo.addEventListener('keyup', () => {
 			let regex = /\d{4}-\d{3}-\d{4}/;
-			if(contactNo.value.match(regex)) {
+			if (contactNo.value.match(regex)) {
 				contactNo.style.border = greenB
 				conError.innerHTML = ""
-			}else {
+			} else {
 				contactNo.style.border = redB
 				conError.innerHTML = "Invalid number format must follow (0XXX-XXX-XXX)"
 			}
 		})
-		
+
 		age.addEventListener('keyup', () => {
-			if(age.value &lt; 18 || age.value &gt; 70) {
+			if (age.value &lt; 18 || age.value &gt; 70) {
 				age.style.border = redB
 				ageError.innerHTML = "Age must be 18 and above"
 			} else {
@@ -342,53 +350,54 @@
 				ageError.innerHTML = ""
 			}
 		})
-		
-	    img.addEventListener('click', () => {
-	        img.classList.add('hide-img')
-	        form[0].classList.add('form-unhide')
-	    })
-	
-	    for (let i = 0; i &lt; 25; i++) {
-	        newSquare.setAttribute("class", "square")
-	        bg[0].appendChild(newSquare.cloneNode())
-	    }
-	    for (let i = 0; i &lt; square.length; i++) {
-	        let red = Math.round(Math.random() * 150)
-	        let green = Math.round(Math.random() * 150)
-	        let blue = Math.round(Math.random() * 150)
-	        if (i % 2 == 0) {
-	            square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
-	        } else {
-	            square[i].style.backgroundColor = "rgb(" + blue + ", " + red + ", " + green + ")"
-	        }
-	    }
-	    for (let i = 0; i &lt; square.length; i++) {
-	        square[i].addEventListener('click', () => {
-	            let red = Math.round(Math.random() * 150)
-	            let green = Math.round(Math.random() * 150)
-	            let blue = Math.round(Math.random() * 150)
-	            square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
-                loginBg[0].style.background = "rgb(" + red + ", " + green + ", " + blue + ")"
-                loginBg[0].style.transition = "0.5s"
-                if (i == 0) {
-                	square[i].style.background = "rgb(207, 207, 207)"
-                }
-                
-	            for (let i = 0; i &lt; label.length; i++) {
-	                label[i].style.color = "white"
-	                formLabel.style.color = "white"
-	            }
-	        })
-	    }
-	    
-	    square[0].style.background = "rgb(207, 207, 207)"
-	    square[0].addEventListener('click', () => {
-	    	loginBg[0].style.background = "rgb(207, 207, 207)"
-	    	for (let i = 0; i &lt; label.length; i++) {
-	    		label[i].style.color = "black"
-	    		formLabel.style.color = "black"
-	    	}
-	    })
+
+		img.addEventListener('click', () => {
+			img.classList.add('hide-img')
+			form[0].classList.add('form-unhide')
+		})
+
+		for (let i = 0; i &lt; 25; i++) {
+			newSquare.setAttribute("class", "square")
+			bg[0].appendChild(newSquare.cloneNode())
+		}
+		for (let i = 0; i &lt; square.length; i++) {
+			let red = Math.round(Math.random() * 150)
+			let green = Math.round(Math.random() * 150)
+			let blue = Math.round(Math.random() * 150)
+			if (i % 2 == 0) {
+				square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
+			} else {
+				square[i].style.backgroundColor = "rgb(" + blue + ", " + red + ", " + green + ")"
+			}
+		}
+		for (let i = 0; i &lt; square.length; i++) {
+			square[i].addEventListener('click', () => {
+				let red = Math.round(Math.random() * 150)
+				let green = Math.round(Math.random() * 150)
+				let blue = Math.round(Math.random() * 150)
+				square[i].style.backgroundColor = "rgb(" + red + ", " + green + ", " + blue + ")"
+				loginBg[0].style.background = "rgb(" + red + ", " + green + ", " + blue + ")"
+				loginBg[0].style.transition = "0.5s"
+				if (i == 0) {
+					square[i].style.background = "rgb(207, 207, 207)"
+				}
+
+				for (let i = 0; i &lt; label.length; i++) {
+					label[i].style.color = "white"
+					formLabel.style.color = "white"
+				}
+			})
+		}
+
+		square[0].style.background = "rgb(207, 207, 207)"
+		square[0].addEventListener('click', () => {
+			loginBg[0].style.background = "rgb(207, 207, 207)"
+			for (let i = 0; i &lt; label.length; i++) {
+				label[i].style.color = "black"
+				formLabel.style.color = "black"
+			}
+		})
 	</script>
 </h:body>
+
 </html>
